@@ -1,1 +1,0 @@
-// ...existing code from app/confirmation/page.tsx
