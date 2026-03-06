@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Reservation {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  
+  // Service
+  serviceId  String
+  serviceNom String
+  servicePrix Int
+  
+  // Barbier
+  barbierId  String
+  barbierNom String
+  
+  // Date & Heure
+  date       String
+  creneau    String
+  
+  // Client
+  prenom     String
+  nom        String
+  tel        String
+  email      String
+  
+  statut     String @default("confirmé")
+}

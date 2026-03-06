@@ -1,0 +1,1 @@
+// ...existing code from app/api/slots/route.ts
