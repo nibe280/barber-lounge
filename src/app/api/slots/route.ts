@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
@@ -25,10 +24,4 @@ export async function GET(req: NextRequest) {
 
   const bookedSlots = data.map((res: any) => res.creneau);
   return NextResponse.json(bookedSlots);
-=======
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json([]);
->>>>>>> origin/main
 }

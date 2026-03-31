@@ -1,14 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-<<<<<<< HEAD
 import { supabase } from "@/lib/supabase";
-=======
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
->>>>>>> origin/main
 import { Resend } from "resend";
 
 
@@ -31,76 +22,45 @@ export async function POST(req: NextRequest) {
     }
 
 
-<<<<<<< HEAD
-    const { data: existing, error: fetchError } = await supabase
-=======
-
-    // Check for existing reservation with same date, creneau, barbierId, and statut 'confirmé'
     const { data: existing, error: existingError } = await supabase
->>>>>>> origin/main
       .from('reservation')
       .select('*')
       .eq('date', date)
       .eq('creneau', creneau)
       .eq('barbierId', barbierId)
-<<<<<<< HEAD
       .in('statut', ['confirmé', 'en_attente'])
       .maybeSingle();
-=======
-      .eq('statut', 'confirmé')
-      .maybeSingle();
+
     if (existingError) {
       return NextResponse.json({ error: 'Erreur lors de la vérification des réservations existantes' }, { status: 500 });
     }
-
->>>>>>> origin/main
 
     if (existing) {
       return NextResponse.json({ error: "Ce créneau est déjà réservé" }, { status: 409 });
     }
 
 
-<<<<<<< HEAD
-  const { data: reservation, error: insertError } = await supabase
-    .from('reservation')
-    .insert([{ serviceId, serviceNom, servicePrix, barbierId, barbierNom, date, creneau, prenom, nom, tel, email }])
-    .select()
-    .single();
+    const { data: reservation, error: insertError } = await supabase
+      .from('reservation')
+      .insert([{ serviceId, serviceNom, servicePrix, barbierId, barbierNom, date, creneau, prenom, nom, tel, email }])
+      .select()
+      .single();
 
-  if (insertError) {
-    console.error("❌ Erreur d'insertion Supabase:", insertError);
-    return NextResponse.json({ error: "Erreur lors de la création de la réservation" }, { status: 500 });
-  }
+    if (insertError) {
+      console.error("❌ Erreur d'insertion Supabase:", insertError);
+      return NextResponse.json({ error: "Erreur lors de la création de la réservation" }, { status: 500 });
+    }
 
-  if (!reservation) {
-    console.warn("⚠️ Réservation insérée avec succès mais aucune donnée retournée. Vérifiez vos politiques RLS SELECT.");
-=======
-
-  // Create reservation in Supabase
-  const { data: reservation, error: createError } = await supabase
-    .from('reservation')
-    .insert([
-      { serviceId, serviceNom, servicePrix, barbierId, barbierNom, date, creneau, prenom, nom, tel, email, statut: 'confirmé' }
-    ])
-    .select()
-    .maybeSingle();
-  if (createError) {
-    return NextResponse.json({ error: 'Erreur lors de la création de la réservation' }, { status: 500 });
->>>>>>> origin/main
-  }
+    if (!reservation) {
+      console.warn("⚠️ Réservation insérée avec succès mais aucune donnée retournée. Vérifiez vos politiques RLS SELECT.");
+    }
 
     const dateLabel = new Date(date).toLocaleDateString("fr-FR", {
       weekday: "long", day: "numeric", month: "long", year: "numeric"
     });
 
-<<<<<<< HEAD
-  console.log("✅ Réservation créée:", reservation?.id);
+    console.log("✅ Réservation créée:", reservation?.id);
     console.log("🔑 RESEND_API_KEY présente:", !!process.env.RESEND_API_KEY);
-=======
-
-  console.log("✅ Réservation créée:", reservation?.id);
-  console.log("🔑 RESEND_API_KEY présente:", !!process.env.RESEND_API_KEY);
->>>>>>> origin/main
 
     // Email au client
     try {
@@ -184,20 +144,13 @@ export async function GET() {
       .from('reservation')
       .select('*')
       .order('createdAt', { ascending: false });
-<<<<<<< HEAD
 
     if (error) {
-       console.error("❌ Erreur fetch réservations:", error);
-       return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+      console.error("❌ Erreur fetch réservations:", error);
+      return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
     }
 
     return NextResponse.json(reservations || []);
-=======
-    if (error) {
-      return NextResponse.json({ error: 'Erreur lors de la récupération des réservations' }, { status: 500 });
-    }
-    return NextResponse.json(reservations);
->>>>>>> origin/main
   } catch (error) {
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
