@@ -1,0 +1,90 @@
+/* CoupeCard.module.css */
+.card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 28px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Icône */
+.iconBox {
+  width: 56px;
+  height: 56px;
+  background: #2a2a1a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  font-size: 1.5rem;
+}
+
+/* Titre */
+.titre {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Description */
+.description {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Liste — sans puces */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.listItem {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.8rem;
+  color: #e8d44d;
+  padding-left: 0;
+  position: static;
+}
+
+/* Footer prix */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.from {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+.prix {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e8d44d;
+}
+
+@media (max-width: 768px) {
+  .card { width: 100%; max-width: 340px; }
+}

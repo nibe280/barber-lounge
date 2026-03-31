@@ -1,0 +1,26 @@
+/* globals.css - Styles globaux pour Barber Lounge */
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-montserrat, Arial, sans-serif);
+  background: #0a0a08;
+  color: #fff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+:root {
+  --font-montserrat: 'Montserrat', Arial, sans-serif;
+}
