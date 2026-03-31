@@ -1,10 +1,6 @@
 "use client";
 
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
-=======
-import { useState } from "react";
->>>>>>> origin/main
 import styles from "./ReservationForm.module.css";
 
 const services = [
@@ -28,10 +24,7 @@ const creneaux = [
   "15:00","15:30","16:00","16:30",
   "17:00","17:30","18:00",
 ];
-<<<<<<< HEAD
-=======
-const indispos = ["10:00", "13:30", "16:00"];
->>>>>>> origin/main
+
 
 export default function ReservationForm() {
   const [etape, setEtape] = useState(1);
@@ -42,7 +35,6 @@ export default function ReservationForm() {
   const [form, setForm] = useState({ prenom: "", nom: "", tel: "", email: "" });
   const [loading, setLoading] = useState(false);
   const [confirme, setConfirme] = useState(false);
-<<<<<<< HEAD
   const [indispos, setIndispos] = useState<string[]>([]);
 
   useEffect(() => {
@@ -53,8 +45,6 @@ export default function ReservationForm() {
         .catch(() => setIndispos([]));
     }
   }, [date, barbier]);
-=======
->>>>>>> origin/main
 
   const today = new Date().toISOString().split("T")[0];
   const dateLabel = date
