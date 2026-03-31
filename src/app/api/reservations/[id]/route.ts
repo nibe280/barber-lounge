@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
@@ -37,18 +36,4 @@ export async function DELETE(req: NextRequest, context: { params: Promise<{ id: 
 
   if (error) return NextResponse.json({ error: "Erreur suppression" }, { status: 500 });
   return NextResponse.json({ success: true });
-=======
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json({});
-}
-
-export async function PUT() {
-  return NextResponse.json({});
-}
-
-export async function DELETE() {
-  return NextResponse.json({});
->>>>>>> origin/main
 }
